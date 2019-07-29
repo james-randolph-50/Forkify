@@ -3,25 +3,21 @@
   "version": "1.0.0",
   "description": "forkify project",
   "main": "index.js",
-  "dependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-polyfill": "^6.26.0",
-    "webpack-cli": "^2.1.5",
-    "webpack-dev-server": "^3.7.2",
-    "webpack": "^4.38.0"
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
   },
+  "author": "James Randolph",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.38.0",
+    "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/james-randolph-50/Forkify.git"
   },
-  "author": "James Randolph",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/james-randolph-50/Forkify/issues"
   },
