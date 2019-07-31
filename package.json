@@ -19,7 +19,9 @@
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/james-randolph-50/Forkify.git"
