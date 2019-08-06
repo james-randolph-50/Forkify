@@ -17,6 +17,7 @@ export default class Recipe {
             this.ingredients = res.data.recipe.ingredients;
         } catch (error) {
             console.log("Error: " + error);
+            alert('Something went wrong.');
         }
     }
 
@@ -29,5 +30,43 @@ export default class Recipe {
 
     calcServings() {
         this.servings = 4;
+    }
+
+    parseIngredients() {
+        const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
+        const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'cup', 'pound'];
+
+        const newIngredients = this.ingredients.map(el => {
+            // Standardize units
+            let ingredient = el.toLowerCase();
+            unitsLong.forEach((unit, i) => {
+                ingredient = ingredient.replace(unit, unitsShort[i]);
+            });
+
+            // Remove parenthesis from recipes
+            ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
+
+            // Parse ingradients into count, unit, and ingredient
+            const arrIng = ingredient.split(' ');
+            const unitIndex = arrIng.findIndex(el2 => unitsShort.includes(el2));
+
+            let objIng;
+            if (unitIndex > -1) {
+                // There is a unit
+
+            } else if (parseInt(arrIng[0], 10)) {
+                // There is NO unit, but 1st element is a number
+            } else if (unitIndex === -1) {
+                // There is no unit and no number in 1st position
+
+                objIng = {
+                    count: 1,
+                    unit: '',
+                    ingredient
+                }
+            }
+            return ingredient;
+        });
+        this.ingredients = newIngredients;
     }
 }
