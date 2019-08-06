@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { key, proxy } from '../config';
+
 
 export default class Recipe {
     constructor(id) {
@@ -7,7 +9,8 @@ export default class Recipe {
 
     async getRecipe() {
         try {
-            const res = await axios()
+            const res = await axios(`${proxy}https://www.food2fork.com/api/get?key=${key}&rId=${this.id}`);
+            console.log(res);
         } catch (error) {
             console.log("Error: " + error);
         }

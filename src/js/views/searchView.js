@@ -44,12 +44,12 @@ const renderRecipe = (recipe) => {
 };
 
 const createButton = (page, type) => `
-        <button class="btn-inline results__btn--${type}" data-goto-${type === 'prev' ? page - 1 : page + 1}>
-            <svg class="search__icon">
-                <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
-            </svg>
-            <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
-        </button>
+    <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page - 1 : page + 1}>
+    <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
+    <svg class="search__icon">
+        <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
+    </svg>
+    </button>
 `;
 
 const renderButtons = (page, numResults, resPerPage) => {
@@ -60,8 +60,8 @@ const renderButtons = (page, numResults, resPerPage) => {
         button = createButton(page, 'next');
     } else if (page < pages) {
         button = `
-        ${createButton(page, 'prev')};
-        ${createButton(page, 'next')};
+        ${createButton(page, 'prev')}
+        ${createButton(page, 'next')}
         `;
     } else if (page === pages && pages > 1) {
         button = createButton(page, 'prev');
