@@ -29,7 +29,7 @@ const controlSearch = async () => {
     
             searchView.renderResults(state.search.result)
         } catch (err) {
-            alert("Error with search");
+            alert("Error with search. You may have hit the API limit");
             clearLoader();
         }
     }
@@ -191,5 +191,3 @@ elements.recipe.addEventListener('click', e => {
         controlLike();
     }
 });
-
-window.l = new List();
