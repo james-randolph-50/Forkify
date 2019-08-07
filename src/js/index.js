@@ -104,13 +104,18 @@ const controlList = () => {
 elements.shopping.addEventListener('click', e => {
     const id = e.target.closest('.shopping__item').dataset.itemid;
 
-    // Handle delete button
-    if (e.target.matched('.shopping__delete','.shopping__delete *' )) {
-        // delete from state
+    // Handle the delete button
+    if (e.target.matches('.shopping__delete, .shopping__delete *')) {
+        // Delete from state
         state.list.deleteItem(id);
 
         // Delete from UI
         listView.deleteItem(id);
+
+        // Handle count update
+    } else if (e.target.matches('.shopping__count--value')) {
+        const val = parseFloat(e.target.value);
+        state.list.updateCount(id, val);
     }
 });
 
